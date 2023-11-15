@@ -1,0 +1,91 @@
+{
+  "name": "product-daily-hunter",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "prefix": "product-daily-hunter",
+  "sourceRoot": "apps/product-daily-hunter/src",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:application",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/product-daily-hunter",
+        "index": "apps/product-daily-hunter/src/index.html",
+        "browser": "apps/product-daily-hunter/src/main.ts",
+        "polyfills": ["zone.js"],
+        "tsConfig": "apps/product-daily-hunter/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/product-daily-hunter/src/favicon.ico",
+          "apps/product-daily-hunter/src/assets"
+        ],
+        "styles": ["apps/product-daily-hunter/src/styles.scss"],
+        "scripts": [],
+        "server": "apps/product-daily-hunter/src/main.server.ts",
+        "prerender": true,
+        "ssr": {
+          "entry": "apps/product-daily-hunter/server.ts"
+        }
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "optimization": false,
+          "extractLicenses": false,
+          "sourceMap": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "buildTarget": "product-daily-hunter:build:production"
+        },
+        "development": {
+          "buildTarget": "product-daily-hunter:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "buildTarget": "product-daily-hunter:build"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "apps/product-daily-hunter/**/*.ts",
+          "apps/product-daily-hunter/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/product-daily-hunter/jest.config.ts"
+      }
+    }
+  }
+}
