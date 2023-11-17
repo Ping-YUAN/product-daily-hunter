@@ -1,0 +1,32 @@
+<div>
+  <mat-form-field class="product-hunter-date-picker-form">
+    <mat-label>Choose a date</mat-label>
+    <input matInput [matDatepicker]="picker" [formControl]="dateToView" />
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+  <button
+    mat-icon-button
+    color="primary"
+    matTooltip="Go to previous day"
+    (click)="setPreviousDate()"
+  >
+    <mat-icon>navigate_before</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    color="primary"
+    matTooltip="Back to today"
+    (click)="setCurrentDate()"
+  >
+    <mat-icon>home</mat-icon>
+  </button>
+  <button
+    mat-icon-button
+    color="primary"
+    matTooltip="Go to next day"
+    (click)="setNextDate()"
+  >
+    <mat-icon>navigate_next</mat-icon>
+  </button>
+</div>

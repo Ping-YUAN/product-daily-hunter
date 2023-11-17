@@ -1,0 +1,36 @@
+{
+  "name": "product-hunter-common",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/product-hunter-common/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/product-hunter-common",
+        "main": "libs/product-hunter-common/src/index.ts",
+        "tsConfig": "libs/product-hunter-common/tsconfig.lib.json",
+        "assets": ["libs/product-hunter-common/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/product-hunter-common/**/*.ts",
+          "libs/product-hunter-common/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/product-hunter-common/jest.config.ts"
+      }
+    }
+  },
+  "tags": []
+}

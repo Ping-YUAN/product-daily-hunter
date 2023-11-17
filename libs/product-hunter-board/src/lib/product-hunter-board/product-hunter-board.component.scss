@@ -1,0 +1,32 @@
+:host,
+product-hunter-board {
+  width: 100%;
+  top: 56px;
+  left: 16px;
+  right: 16px;
+  position: absolute;
+  height: calc(100vh - 124px);
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: space-around;
+  justify-content: center;
+
+  .product-board {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .product-hunter-view {
+      margin-right: 40px;
+      .product-hunter-category {
+        min-width: 620px;
+      }
+      .product-hunter-statistic {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-between;
+      }
+    }
+  }
+}

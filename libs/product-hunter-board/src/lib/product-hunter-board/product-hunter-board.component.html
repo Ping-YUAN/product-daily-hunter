@@ -1,0 +1,41 @@
+<div class="product-board">
+  <div class="product-hunter-view">
+    <div class="product-hunter-category">
+      <product-hunter-card
+        [bannerName]="'Hottest Category'"
+        [bannerText]="
+          (hottestCategory$ | async)?.topic +
+          '(' +
+          (hottestCategory$ | async)?.count +
+          ')'
+        "
+        [bannerTooltip]="'Most common Category of the day'"
+      ></product-hunter-card>
+      <div class="product-hunter-statistic">
+        <product-hunter-card
+          [bannerName]="'Total Apps'"
+          [bannerText]="(totalApp$ | async)?.toString()!"
+          [bannerTooltip]="'How many apps have been published today'"
+        ></product-hunter-card>
+        <product-hunter-card
+          [bannerName]="'Most Voted App'"
+          [bannerText]="(mostVotedApp$ | async)?.toString()!"
+          [bannerTooltip]="'The most voted App fo the day'"
+        ></product-hunter-card>
+        <product-hunter-card
+          [bannerName]="'Most Comment App'"
+          [bannerText]="(mostCommentApp$ | async)?.toString()!"
+          [bannerTooltip]="'The most comment App fo the day'"
+        ></product-hunter-card>
+      </div>
+    </div>
+    <product-hunter-chart
+      [categories]="(productCategories$ | async)!"
+    ></product-hunter-chart>
+  </div>
+
+  <product-list
+    [productPosts]="(products$ | async)!"
+    [categories]="(productCategories$ | async)!"
+  ></product-list>
+</div>

@@ -1,0 +1,16 @@
+:host,
+product-hunter-date-picker {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-content: space-around;
+  justify-content: space-around;
+
+  .product-hunter-date-picker-form {
+    margin-right: 32px;
+    .mat-mdc-form-field-subscript-wrapper,
+    .mdc-line-ripple {
+      display: none;
+    }
+  }
+}

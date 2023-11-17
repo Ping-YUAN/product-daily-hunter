@@ -1,0 +1,15 @@
+:host {
+  height: 100%;
+  .product-list-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .product-filter {
+      margin-top: 8px;
+    }
+  }
+  mat-list {
+    height: 100%;
+    overflow-y: auto;
+  }
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="jest tests" tests="14" failures="0" errors="0" time="10.022">
+  <testsuite name="ProductListComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-17T18:02:50" time="2.062" tests="2">
+    <testcase classname="ProductListComponent should create" name="ProductListComponent should create" time="0.161">
+    </testcase>
+    <testcase classname="ProductListComponent should filter according to the select" name="ProductListComponent should filter according to the select" time="0.047">
+    </testcase>
+  </testsuite>
+  <testsuite name="AppComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-17T18:02:52" time="1.705" tests="2">
+    <testcase classname="AppComponent should get isloading to be falsy" name="AppComponent should get isloading to be falsy" time="0.175">
+    </testcase>
+    <testcase classname="AppComponent should get isloading to be true" name="AppComponent should get isloading to be true" time="0.039">
+    </testcase>
+  </testsuite>
+  <testsuite name="ProductHunterBoardComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-17T18:02:54" time="0.79" tests="1">
+    <testcase classname="ProductHunterBoardComponent should create" name="ProductHunterBoardComponent should create" time="0.156">
+    </testcase>
+  </testsuite>
+  <testsuite name="ProductHunterNavComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-17T18:02:54" time="1.364" tests="1">
+    <testcase classname="ProductHunterNavComponent should create" name="ProductHunterNavComponent should create" time="0.109">
+    </testcase>
+  </testsuite>
+  <testsuite name="ProductHunterDatePickerComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-17T18:02:56" time="1.335" tests="3">
+    <testcase classname="ProductHunterDatePickerComponent should create" name="ProductHunterDatePickerComponent should create" time="0.095">
+    </testcase>
+    <testcase classname="ProductHunterDatePickerComponent should set previous day" name="ProductHunterDatePickerComponent should set previous day" time="0.031">
+    </testcase>
+    <testcase classname="ProductHunterDatePickerComponent should set next day" name="ProductHunterDatePickerComponent should set next day" time="0.043">
+    </testcase>
+  </testsuite>
+  <testsuite name="ProductHunterChartComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-17T18:02:57" time="0.416" tests="1">
+    <testcase classname="ProductHunterChartComponent should create" name="ProductHunterChartComponent should create" time="0.036">
+    </testcase>
+  </testsuite>
+  <testsuite name="product hunter servies" errors="0" failures="0" skipped="0" timestamp="2023-11-17T18:02:58" time="0.902" tests="2">
+    <testcase classname="product hunter servies should be created" name="product hunter servies should be created" time="0.014">
+    </testcase>
+    <testcase classname="product hunter servies should test set targetdate " name="product hunter servies should test set targetdate " time="0.009">
+    </testcase>
+  </testsuite>
+  <testsuite name="ProductHunterCardComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-17T18:02:58" time="0.542" tests="1">
+    <testcase classname="ProductHunterCardComponent should create" name="ProductHunterCardComponent should create" time="0.039">
+    </testcase>
+  </testsuite>
+  <testsuite name="GET /" errors="0" failures="0" skipped="0" timestamp="2023-11-17T18:02:59" time="0.201" tests="1">
+    <testcase classname="GET / should return a message" name="GET / should return a message" time="0.03">
+    </testcase>
+  </testsuite>
+</testsuites>

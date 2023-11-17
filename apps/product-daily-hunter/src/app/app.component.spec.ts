@@ -2,26 +2,44 @@ import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterTestingModule } from '@angular/router/testing';
+import { ProductHunterNavComponent } from '@product-daily-hunter/product-hunter-nav';
+import { ProductHunterServices } from '@product-daily-hunter/product-hunter-services';
+import { signal } from '@angular/core';
 
+export class ServcieMock {
+  isLoading = signal(false);
+  targetDateChanged() {
+    this.isLoading.set(true);
+  }
+}
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent, NxWelcomeComponent, RouterTestingModule],
+      imports: [
+        AppComponent,
+        NxWelcomeComponent,
+        RouterTestingModule,
+        ProductHunterNavComponent,
+      ],
+      providers: [
+        {
+          provide: ProductHunterServices,
+          useClass: ServcieMock,
+        },
+      ],
     }).compileComponents();
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain(
-      'Welcome product-daily-hunter'
-    );
-  });
-
-  it(`should have as title 'product-daily-hunter'`, () => {
+  it(`should get isloading to be falsy`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('product-daily-hunter');
+    expect(app.isLoading()).toBeFalsy();
+  });
+
+  it(`should get isloading to be true`, () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    const app = fixture.componentInstance;
+    app.onDateChanged({});
+    expect(app.isLoading()).toBeTruthy();
   });
 });

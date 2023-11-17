@@ -1,0 +1,45 @@
+<div class="product-list-header">
+  <h2>Products</h2>
+  <mat-form-field class="product-filter">
+    <mat-label>Category</mat-label>
+    <mat-select [formControl]="productCategoryForm">
+      <mat-option [value]=""></mat-option>
+      @for (category of categories; track category.topic) {
+      <mat-option [value]="category.topic"
+        >{{ category.topic }} - ({{ category.count }})</mat-option
+      >
+      }
+    </mat-select>
+  </mat-form-field>
+</div>
+
+<mat-list>
+  @for (product of productToList(); track product.id) {
+  <mat-list-item>
+    <div matListItemTitle>{{ product.name }}</div>
+    <div matListItemLine [matTooltip]="product.discription">
+      {{ product.discription }}
+    </div>
+
+    <div matListItemMeta>
+      <mat-chip>
+        <mat-icon matChipAvatar> thumb_up </mat-icon>
+        {{ product.votesCount }}</mat-chip
+      >
+      <mat-chip>
+        <mat-icon matChipAvatar>comment</mat-icon>
+        {{ product.commentsCount }}</mat-chip
+      >
+      <button
+        mat-icon-button
+        color="accent"
+        [matTooltip]="'Go to ' + product.name + ' site to learn more'"
+        (click)="checkDetails(product)"
+      >
+        <mat-icon (click)="checkDetails(product)">forward</mat-icon>
+      </button>
+    </div>
+  </mat-list-item>
+  <mat-divider></mat-divider>
+  }
+</mat-list>

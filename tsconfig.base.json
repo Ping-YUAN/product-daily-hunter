@@ -6,6 +6,7 @@
     "declaration": false,
     "moduleResolution": "node",
     "emitDecoratorMetadata": true,
+    "noImplicitAny": false,
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "es2015",
@@ -14,7 +15,23 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@product-daily-hunter/product-hunter-board": [
+        "libs/product-hunter-board/src/index.ts"
+      ],
+      "@product-daily-hunter/product-hunter-common": [
+        "libs/product-hunter-common/src/index.ts"
+      ],
+      "@product-daily-hunter/product-hunter-date-picker": [
+        "libs/product-hunter-date-picker/src/index.ts"
+      ],
+      "@product-daily-hunter/product-hunter-nav": [
+        "libs/product-hunter-nav/src/index.ts"
+      ],
+      "@product-daily-hunter/product-hunter-services": [
+        "libs/product-hunter-services/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
