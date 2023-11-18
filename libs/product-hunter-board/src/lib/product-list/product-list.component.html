@@ -15,10 +15,11 @@
 
 <mat-list>
   @for (product of productToList(); track product.id) {
-  <mat-list-item>
+  <mat-list-item [matTooltip]="product.description">
+    <img matListItemIcon [src]="product.thumbnail.url" />
     <div matListItemTitle>{{ product.name }}</div>
-    <div matListItemLine [matTooltip]="product.discription">
-      {{ product.discription }}
+    <div matListItemLine>
+      {{ product.tagline }}
     </div>
 
     <div matListItemMeta>

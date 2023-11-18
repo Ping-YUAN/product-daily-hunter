@@ -1,0 +1,20 @@
+:host,
+product-hunter-no-data {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  .product-empty-page__title {
+    position: absolute;
+    width: 100%;
+    top: calc(20vh);
+    text-align: center;
+  }
+  .mat-icon {
+    transform: scale(7.33);
+    padding-bottom: 20px;
+  }
+}

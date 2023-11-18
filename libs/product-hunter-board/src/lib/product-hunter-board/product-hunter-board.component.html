@@ -2,14 +2,16 @@
   <div class="product-hunter-view">
     <div class="product-hunter-category">
       <product-hunter-card
-        [bannerName]="'Hottest Category'"
+        [bannerName]="'Hottest Category(App count)'"
         [bannerText]="
           (hottestCategory$ | async)?.topic +
           '(' +
           (hottestCategory$ | async)?.count +
           ')'
         "
-        [bannerTooltip]="'Most common Category of the day'"
+        [bannerTooltip]="
+          'Most common Category of the day and how many apps related to this category'
+        "
       ></product-hunter-card>
       <div class="product-hunter-statistic">
         <product-hunter-card

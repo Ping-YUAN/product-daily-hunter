@@ -1,7 +1,9 @@
 <product-hunter-nav (changed)="onDateChanged($event)"></product-hunter-nav>
 
-@if (isLoading()) {
+@if (!error() && isLoading()) {
 <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-}
-
+} @if (error()) {
+<product-hunter-no-data></product-hunter-no-data>
+} @else {
 <product-hunter-board></product-hunter-board>
+}

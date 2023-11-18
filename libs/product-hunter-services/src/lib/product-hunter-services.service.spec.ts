@@ -40,7 +40,7 @@ describe('product hunter servies', () => {
           id: '425759',
           name: 'PomoTimer',
           slug: 'pomotimer-2',
-          discription: 'Your focus time buddy to boost your productivity',
+          description: 'Your focus time buddy to boost your productivity',
           topics: ['productivity', 'task-management', 'time-tracking'],
           commentsCount: 2,
           votesCount: 8,

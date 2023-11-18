@@ -31,11 +31,16 @@ describe('ProductListComponent', () => {
         id: 425542,
         name: 'Cypher',
         slug: 'cypher-3',
-        discription: 'Meet your AI self',
+        tagline: 'ss',
+        description: 'Meet your AI self',
         topics: ['messaging', 'artificial-intelligence', 'entertainment'],
         commentsCount: 286,
         votesCount: 575,
         url: 'https://www.producthunt.com/r/p/425542',
+        thumbnail: {
+          type: 'image',
+          url: 'sss',
+        },
       },
     ];
     component.categories = [{ topic: 'messaging', count: 1 }];

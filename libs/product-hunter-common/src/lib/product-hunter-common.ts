@@ -1,13 +1,21 @@
+export interface ProductThumbnail {
+  type: string;
+  url: string;
+}
+
 export interface ProductPost {
   name: string;
   id: number;
   slug: string;
-  discription: string; //tagline
+  tagline: string;
+  description: string; //tagline
   topics: string[];
   commentsCount: number;
   votesCount: number;
   url: string;
+  thumbnail: ProductThumbnail;
 }
+
 export class ProductDataPaged {
   posts: ProductPost[];
   pageInfo: {

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs/internal/Subject';
@@ -12,6 +13,7 @@ export class ProductHunterServices {
   private productsSubject$ = new Subject<ProductPost[]>();
 
   isLoading = signal(true);
+  errorFromBackend = signal(false);
 
   constructor(private httpClient: HttpClient) {}
 
@@ -28,11 +30,17 @@ export class ProductHunterServices {
 
   getReleasedProductByDate(dateString: string) {
     this.isLoading.set(true);
-    this.httpClient.get(`/api/products/${dateString}`).subscribe((data) => {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      this.products = (data as any).posts;
-      this.productsSubject$.next(this.products);
-      this.isLoading.set(false);
+    this.errorFromBackend.set(false);
+    this.httpClient.get(`/api/products/${dateString}`).subscribe({
+      next: (data) => {
+        this.products = (data as any).posts;
+        this.productsSubject$.next(this.products);
+        this.isLoading.set(false);
+        this.errorFromBackend.set(false);
+      },
+      error: () => {
+        this.errorFromBackend.set(true);
+      },
     });
   }
 }

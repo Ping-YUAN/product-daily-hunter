@@ -62,12 +62,11 @@ export class ProductHunterBoardComponent implements OnInit {
         mostVotedApp = post.name;
       }
       post.topics.forEach((topic) => {
-        const lowerTopic = topic.toLowerCase();
         const topicCount =
-          categoryMap.has(lowerTopic) && categoryMap.get(lowerTopic)
-            ? (categoryMap.get(lowerTopic) ?? 0) + 1
+          categoryMap.has(topic) && categoryMap.get(topic)
+            ? (categoryMap.get(topic) ?? 0) + 1
             : 1;
-        categoryMap.set(lowerTopic, topicCount);
+        categoryMap.set(topic, topicCount);
 
         if (topicCount > categoryMax) {
           categoryMax = topicCount;
@@ -88,10 +87,7 @@ export class ProductHunterBoardComponent implements OnInit {
     this.mostVotedApp$ = of(mostVotedApp);
     this.mostCommentApp$ = of(mostCommentApp);
     this.hottestCategory$ = of({
-      topic: hottestCategory
-        .split('-')
-        .map((item) => item.charAt(0).toUpperCase() + item.slice(1))
-        .join(' '),
+      topic: hottestCategory,
       count: categoryMax,
     });
   }

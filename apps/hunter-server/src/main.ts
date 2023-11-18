@@ -8,10 +8,9 @@ const port = process.env.PORT ? Number(process.env.PORT) : 3000;
 
 const clientId = process.env.CLIENT_ID ? process.env.CLIENT_ID : '';
 const clientSecret = process.env.CLIENT_SECRET ? process.env.CLIENT_SECRET : '';
-const baseUrl = process.env.baseUrl ? process.env.baseUrl : '';
 
 const config = new HunterApiConfiguration(clientId, clientSecret);
-const hunterApi = new ProductHunterApi(config, baseUrl);
+const hunterApi = new ProductHunterApi(config);
 
 const appPath = path.join(__dirname, '../../../../product-daily-hunter');
 
@@ -27,7 +26,10 @@ app.get('/api/', (req, res) => {
 
 app.get('/api/products/:publicDate', (req, res) => {
   const publicDate = req.params.publicDate as string;
-  if (!isNaN(new Date(publicDate).getDate())) {
+  if (
+    !isNaN(new Date(publicDate).getDate()) &&
+    new Date(publicDate) <= new Date()
+  ) {
     hunterApi
       .getProductReleasedByDate(publicDate)
       .then((data) => {

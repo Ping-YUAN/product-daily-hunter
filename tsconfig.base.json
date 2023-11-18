@@ -28,6 +28,9 @@
       "@product-daily-hunter/product-hunter-nav": [
         "libs/product-hunter-nav/src/index.ts"
       ],
+      "@product-daily-hunter/product-hunter-no-data": [
+        "libs/product-hunter-no-data/src/index.ts"
+      ],
       "@product-daily-hunter/product-hunter-services": [
         "libs/product-hunter-services/src/index.ts"
       ]

@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
-import { NxWelcomeComponent } from './nx-welcome.component';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ProductHunterNavComponent } from '@product-daily-hunter/product-hunter-nav';
 import { ProductHunterServices } from '@product-daily-hunter/product-hunter-services';
@@ -15,12 +14,7 @@ export class ServcieMock {
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [
-        AppComponent,
-        NxWelcomeComponent,
-        RouterTestingModule,
-        ProductHunterNavComponent,
-      ],
+      imports: [AppComponent, RouterTestingModule, ProductHunterNavComponent],
       providers: [
         {
           provide: ProductHunterServices,

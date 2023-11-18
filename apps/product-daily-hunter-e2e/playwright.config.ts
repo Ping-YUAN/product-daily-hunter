@@ -1,12 +1,12 @@
 import { defineConfig } from '@playwright/test';
 import { nxE2EPreset } from '@nx/playwright/preset';
 
-import { workspaceRoot } from '@nx/devkit';
+// import { workspaceRoot } from '@nx/devkit';
 
 // For CI, you may want to set BASE_URL to the deployed application.
-const baseURL =
-  process.env['BASE_URL'] || 'http://localhost:' + process.env.PORT;
+const baseURL = 'http://localhost:' + process.env.PORT;
 
+console.log(baseURL);
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -25,10 +25,10 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
   /* Run your local dev server before starting the tests */
-  webServer: {
-    command: 'npx nx serve product-daily-hunter',
-    url: 'http://localhost:' + process.env.PORT,
-    reuseExistingServer: !process.env.CI,
-    cwd: workspaceRoot,
-  },
+  // webServer: {
+  //   command: 'npx nx serve product-daily-hunter',
+  //   url: 'http://localhost:' + process.env.PORT,
+  //   reuseExistingServer: !process.env.CI,
+  //   cwd: workspaceRoot,
+  // },
 });

@@ -1,20 +1,17 @@
-import axios from 'axios';
-import { Graphiql_Query } from './query-builder';
+import { GraphqlQuery, GraphqlVariables } from './query-builder';
 import { ProductDataPaged } from '@product-daily-hunter/product-hunter-common';
-import { HunterApiConfiguration, ShortBaseUrl } from './model';
+import { HunterApiConfiguration } from './model';
 
 export class ProductHunterApi {
-  private configuration: HunterApiConfiguration; // not used as for now
-  private url: string;
+  private configuration: HunterApiConfiguration;
 
-  constructor(configuration: HunterApiConfiguration, url: string) {
+  constructor(configuration: HunterApiConfiguration) {
     this.configuration = configuration;
-    this.url = url;
   }
 
   getProductReleasedByDate(dateStr: string): Promise<ProductDataPaged> {
     return new Promise((resolve, reject) => {
-      this.getAllProductByDate(dateStr, null, null)
+      this.getAllProductByDate(dateStr, null, '')
         .then((data) => {
           resolve(data);
         })
@@ -26,28 +23,26 @@ export class ProductHunterApi {
 
   getAllProductByDate(
     dateStr: string,
-    allData,
-    cursor
+    allData: ProductDataPaged,
+    cursor: string
   ): Promise<ProductDataPaged> {
     const date = new Date(dateStr);
-    return axios
-      .post(
-        this.url,
-        {
-          ...Graphiql_Query,
-          ...{
-            variables: {
-              year: date.getFullYear(),
-              month: date.getMonth() + 1,
-              day: date.getDate(),
-              cursor: cursor,
-            },
-          },
-        },
-        {
-          headers: { 'content-type': 'application/json' },
-        }
-      )
+    const nextDay = new Date(date);
+    nextDay.setDate(nextDay.getDate() + 1);
+    const variables: GraphqlVariables = {
+      first: 20,
+      featured: true,
+      order: 'VOTES',
+      after: cursor,
+      postedAfter: date.toISOString(),
+      postedBefore: nextDay.toISOString(),
+    };
+
+    return this.configuration.api
+      .post(process.env.GRAPHQL, {
+        query: GraphqlQuery.query,
+        variables: variables,
+      })
       .then((response) => {
         allData = this.formatProductPostData(allData, response.data.data.posts);
         if (!allData.pageInfo.hasNextPage) {
@@ -59,6 +54,9 @@ export class ProductHunterApi {
             allData.pageInfo.endCursor
           );
         }
+      })
+      .catch(() => {
+        throw new Error('Error while request data');
       });
   }
 
@@ -72,6 +70,7 @@ export class ProductHunterApi {
 
     postData.pageInfo.hasNextPage = newPagedData.pageInfo.hasNextPage;
     postData.pageInfo.endCursor = newPagedData.pageInfo.endCursor;
+
     postData.posts = postData.posts.concat(
       newPagedData.edges.map((itemNode) => {
         const item = itemNode.node;
@@ -79,14 +78,19 @@ export class ProductHunterApi {
           id: item.id,
           name: item.name,
           slug: item.slug,
-          discription: item.tagline,
-          topics: item.topics.edges.map((topicNode) => topicNode.node.slug),
+          tagline: item.tagline,
+          description: item.description,
+          topics: item.topics.edges.map((topicNode) => topicNode.node.name),
           commentsCount: item.commentsCount,
           votesCount: item.votesCount,
-          url: ShortBaseUrl + item.shortenedUrl,
+          url: item.productLinks.filter(
+            (item) => item.type.toLowerCase() == 'website'
+          ).url,
+          thumbnail: item.thumbnail,
         };
       })
     );
+
     postData.pageInfo.totalCount = postData.posts.length;
     return postData;
   }
