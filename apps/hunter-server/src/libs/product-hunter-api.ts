@@ -83,9 +83,9 @@ export class ProductHunterApi {
           topics: item.topics.edges.map((topicNode) => topicNode.node.name),
           commentsCount: item.commentsCount,
           votesCount: item.votesCount,
-          url: item.productLinks.filter(
-            (item) => item.type.toLowerCase() == 'website'
-          ).url,
+          url: item.productLinks.find((productItem) => {
+            return productItem.type.toLowerCase() === 'website';
+          })?.url,
           thumbnail: item.thumbnail,
         };
       })

@@ -11,5 +11,24 @@
   mat-list {
     height: 100%;
     overflow-y: auto;
+
+    .mdc-list-item__start,
+    .mdc-list-item__end {
+      margin-top: 0px;
+      align-self: center;
+    }
+    .mat-list .mdc-list-item--with-leading-icon {
+      border-radius: 0;
+    }
+    .mat-mdc-list-item-icon .mdc-list-item__start {
+      border-radius: 50%;
+    }
+
+    .mat-mdc-standard-chip {
+      background-color: transparent;
+    }
+    .mat-mdc-chip:hover .mat-mdc-chip-focus-overlay {
+      opacity: 1;
+    }
   }
 }
