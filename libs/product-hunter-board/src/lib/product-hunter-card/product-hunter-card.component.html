@@ -1,7 +1,7 @@
 <mat-card matTooltip="{{ bannerTooltip }}" #tooltip="matTooltip">
   <mat-card-content>
     <div class="banner-item">
-      <span class="product-hunter-banner">{{ bannerText }}</span>
+      <span class="product-hunter-banner" matTooltip="{{bannerText}}">{{ bannerText }}</span>
       <span class="product-hunter-banner-name">{{ bannerName }}</span>
     </div>
   </mat-card-content>

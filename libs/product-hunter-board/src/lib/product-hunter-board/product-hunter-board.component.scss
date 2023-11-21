@@ -26,6 +26,9 @@ product-hunter-board {
         flex-direction: row;
         flex-wrap: nowrap;
         justify-content: space-between;
+        .product-name-card{
+          max-width: 200px;
+        }
       }
     }
   }
