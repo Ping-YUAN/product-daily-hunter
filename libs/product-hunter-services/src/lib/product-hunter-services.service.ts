@@ -14,6 +14,7 @@ export class ProductHunterServices {
 
   isLoading = signal(true);
   errorFromBackend = signal(false);
+  errorTooManyRequest = signal(false);
 
   constructor(private httpClient: HttpClient) {}
 
@@ -30,17 +31,24 @@ export class ProductHunterServices {
 
   getReleasedProductByDate(dateString: string) {
     this.isLoading.set(true);
-    this.errorFromBackend.set(false);
+    this.clearErrorInfo();
     this.httpClient.get(`/api/products/${dateString}`).subscribe({
       next: (data) => {
         this.products = (data as any).posts;
         this.productsSubject$.next(this.products);
         this.isLoading.set(false);
-        this.errorFromBackend.set(false);
       },
-      error: () => {
+      error: (err) => {
+        if (err.status === 429) {
+          this.errorTooManyRequest.set(true);
+        }
         this.errorFromBackend.set(true);
       },
     });
+  }
+
+  clearErrorInfo() {
+    this.errorFromBackend.set(false);
+    this.errorTooManyRequest();
   }
 }

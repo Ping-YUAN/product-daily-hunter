@@ -36,7 +36,7 @@ app.get('/api/products/:publicDate', (req, res) => {
         res.status(201).json(data).end();
       })
       .catch((err) => {
-        res.status(500).json(err);
+        res.status(err.status ? err.status : 500).json(err);
       });
   } else {
     res.status(400).json({ error: 'Invalid Date' }).end();
