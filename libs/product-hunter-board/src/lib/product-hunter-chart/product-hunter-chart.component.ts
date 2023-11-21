@@ -1,10 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   Component,
+  EventEmitter,
   Inject,
   InjectionToken,
   Input,
   OnInit,
+  Output,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import * as Chart from 'chart.js/auto';
@@ -48,6 +50,8 @@ export class ProductHunterChartComponent implements OnInit {
       this.chart.update();
     }
   }
+  @Output() categoryClicked = new EventEmitter<string>();
+
   constructor(
     @Inject(ChartBuilderToken) private buildChart: typeof chartBuilder
   ) {}
@@ -68,6 +72,10 @@ export class ProductHunterChartComponent implements OnInit {
           title: {
             display: false,
           },
+        },
+        onClick: (e) => {
+          const title = e.chart.tooltip.title[0];
+          this.categoryClicked.emit(title);
         },
       },
     });

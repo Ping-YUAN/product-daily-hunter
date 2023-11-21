@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ProductHunterServices } from '@product-daily-hunter/product-hunter-services';
@@ -30,6 +35,8 @@ export class ProductHunterBoardComponent implements OnInit {
   totalApp$!: Observable<number>;
   mostVotedApp$!: Observable<string>;
   mostCommentApp$!: Observable<string>;
+
+  filterCategory = signal('');
 
   constructor(private productApi: ProductHunterServices) {}
 

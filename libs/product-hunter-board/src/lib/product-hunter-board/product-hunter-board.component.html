@@ -20,13 +20,13 @@
           [bannerTooltip]="'How many apps have been published today'"
         ></product-hunter-card>
         <product-hunter-card
-        class="product-name-card"
+          class="product-name-card"
           [bannerName]="'Most Voted App'"
           [bannerText]="(mostVotedApp$ | async)?.toString()!"
           [bannerTooltip]="'The most voted App fo the day'"
         ></product-hunter-card>
         <product-hunter-card
-        class="product-name-card"
+          class="product-name-card"
           [bannerName]="'Most Comment App'"
           [bannerText]="(mostCommentApp$ | async)?.toString()!"
           [bannerTooltip]="'The most comment App fo the day'"
@@ -35,11 +35,13 @@
     </div>
     <product-hunter-chart
       [categories]="(productCategories$ | async)!"
+      (categoryClicked)="filterCategory.set($event)"
     ></product-hunter-chart>
   </div>
 
   <product-list
     [productPosts]="(products$ | async)!"
     [categories]="(productCategories$ | async)!"
+    [filterCategory]="filterCategory()"
   ></product-list>
 </div>

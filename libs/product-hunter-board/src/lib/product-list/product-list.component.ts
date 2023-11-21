@@ -55,17 +55,17 @@ export class ProductListComponent implements OnInit {
   get productPosts() {
     return this._productPosts;
   }
+  @Input()
+  set filterCategory(category: string) {
+    this.productCategoryForm.setValue(category);
+  }
 
   @Input() categories: ProductCategory[] = [];
 
   ngOnInit(): void {
     this.productCategoryForm.valueChanges.subscribe((data) => {
       if (data) {
-        this.productToList.set(
-          this.productPosts.filter((item) => {
-            return item.topics.includes(data);
-          })
-        );
+        this.filterProductByCategory(data);
       } else {
         this.productToList.set(this.productPosts);
       }
@@ -74,5 +74,13 @@ export class ProductListComponent implements OnInit {
 
   checkDetails(product: ProductPost) {
     window.open(product.url, '_blank');
+  }
+
+  filterProductByCategory(category: string) {
+    this.productToList.set(
+      this.productPosts.filter((item) => {
+        return item.topics.includes(category);
+      })
+    );
   }
 }

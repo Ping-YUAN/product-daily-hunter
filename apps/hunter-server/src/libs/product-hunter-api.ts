@@ -55,8 +55,8 @@ export class ProductHunterApi {
           );
         }
       })
-      .catch(() => {
-        throw new Error('Error while request data');
+      .catch((err) => {
+        throw new Error(err);
       });
   }
 
