@@ -50,7 +50,7 @@ export class ProductListComponent implements OnInit {
   @Input()
   set productPosts(posts: ProductPost[]) {
     this._productPosts = posts;
-    this.productToList.set(this.productPosts);
+    this.productCategoryForm.setValue('');
   }
   get productPosts() {
     return this._productPosts;
