@@ -1,16 +1,9 @@
 import express from 'express';
 import path from 'path';
-import { ProductHunterApi } from './libs/product-hunter-api';
-import { HunterApiConfiguration } from './libs/model';
+import { productRouter } from './routes';
 
 const host = process.env.HOST ?? 'localhost';
 const port = process.env.PORT ? Number(process.env.PORT) : 3000;
-
-const clientId = process.env.CLIENT_ID ? process.env.CLIENT_ID : '';
-const clientSecret = process.env.CLIENT_SECRET ? process.env.CLIENT_SECRET : '';
-
-const config = new HunterApiConfiguration(clientId, clientSecret);
-const hunterApi = new ProductHunterApi(config);
 
 const appPath = path.join(__dirname, '../../../../product-daily-hunter');
 
@@ -24,24 +17,7 @@ app.get('/api/', (req, res) => {
   res.status(200).json({ message: 'Hello API' }).end();
 });
 
-app.get('/api/products/:publicDate', (req, res) => {
-  const publicDate = req.params.publicDate as string;
-  if (
-    !isNaN(new Date(publicDate).getDate()) &&
-    new Date(publicDate) <= new Date()
-  ) {
-    hunterApi
-      .getProductReleasedByDate(publicDate)
-      .then((data) => {
-        res.status(201).json(data).end();
-      })
-      .catch((err) => {
-        res.status(err.status ? err.status : 500).json(err);
-      });
-  } else {
-    res.status(400).json({ error: 'Invalid Date' }).end();
-  }
-});
+app.use('/api/products/', productRouter);
 
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);

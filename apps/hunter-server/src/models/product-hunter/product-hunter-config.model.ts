@@ -15,16 +15,7 @@ export class HunterApiConfiguration {
     });
 
     this.api.interceptors.request.use(
-      async (config) => {
-        if (config.url.includes('oauth/token')) return config;
-        if (!this.apiKey) {
-          const token = await this.getApiKey(this.clientId, clientSecret);
-          this.apiKey = token;
-        }
-
-        config.headers['Authorization'] = `Bearer ${this.apiKey}`;
-        return config;
-      },
+      async (config) => await this.onRequest(config),
       (error) => {
         return Promise.reject(error);
       }
@@ -38,5 +29,15 @@ export class HunterApiConfiguration {
       grant_type: 'client_credentials',
     });
     return res.data.access_token;
+  }
+
+  async onRequest(config) {
+    if (config.url.includes('oauth/token')) return config;
+    if (!this.apiKey) {
+      const token = await this.getApiKey(this.clientId, this.clientSecret);
+      this.apiKey = token;
+    }
+    config.headers['Authorization'] = `Bearer ${this.apiKey}`;
+    return config;
   }
 }

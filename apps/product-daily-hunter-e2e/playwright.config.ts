@@ -6,7 +6,6 @@ import { nxE2EPreset } from '@nx/playwright/preset';
 // For CI, you may want to set BASE_URL to the deployed application.
 const baseURL = 'http://localhost:' + process.env.PORT;
 
-console.log(baseURL);
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv

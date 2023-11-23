@@ -1,6 +1,6 @@
-import { GraphqlQuery, GraphqlVariables } from './query-builder';
+import { GraphqlQuery, GraphqlVariables } from './product-hunter.query-builder';
 import { ProductDataPaged } from '@product-daily-hunter/product-hunter-common';
-import { HunterApiConfiguration } from './model';
+import { HunterApiConfiguration } from './product-hunter-config.model';
 
 export class ProductHunterApi {
   private configuration: HunterApiConfiguration;

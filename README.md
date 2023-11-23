@@ -3,9 +3,10 @@
 **This is a mono repo created by [Nx](https://nx.dev)**
 
 The project is used to track the new released product to give use an overview report based on the day that user select.
-Project build with
-`angular v17` with new control flow/signal/rxjs.
-`node v18.18.2` with express.
+Project build with  
+`angular v17` with new control flow/signal/rxjs.  
+`node v18.18.2` with express.  
+[`Product Hunter Api` ](https://api.producthunt.com/v2/docs)
 
 ## Main Feature
 
