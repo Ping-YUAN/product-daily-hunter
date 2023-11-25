@@ -4,8 +4,33 @@ import {
   getProductByReleasedDate,
   hunterApi,
 } from './product-hunter.controller';
+
+class MockRes {
+  private _status;
+  status(code: number) {
+    this._status = code;
+    return {
+      json: () => {
+        // eslint-disable-next-line no-unused-labels
+        end: () => jest.fn();
+      },
+    };
+  }
+  get statusCode() {
+    return this._status;
+  }
+}
+
+const req = {
+  params: {
+    publicDate: '2023-01-12',
+  },
+} as any;
+
+const res = new MockRes();
+const flushPromises = () => new Promise(setImmediate);
 describe('test for product hunter controller', () => {
-  it('should test get product by release date success', () => {
+  it('should test get product by release date success', async () => {
     jest.spyOn(hunterApi, 'getProductReleasedByDate').mockImplementation(() => {
       return lastValueFrom(
         of({
@@ -18,27 +43,30 @@ describe('test for product hunter controller', () => {
         })
       );
     });
-    getProductByReleasedDate('2023-01-12').then((data) => {
-      const productPagedData = data as any;
-      expect(productPagedData).toBeTruthy();
-      expect(productPagedData.posts.length).toBe(0);
-    });
+
+    getProductByReleasedDate(req, res);
+    await flushPromises();
+    expect(res.statusCode).toBe(201);
   });
 
-  it('should throw error', () => {
+  it('should throw error', async () => {
     const errorMessage = 'internal error';
     jest
       .spyOn(hunterApi, 'getProductReleasedByDate')
       .mockRejectedValueOnce(new Error(errorMessage));
 
-    getProductByReleasedDate('2023-01-12').catch((err) => {
-      expect(err).toBeTruthy();
-    });
+    getProductByReleasedDate(req, res);
+    await flushPromises();
+    expect(res.statusCode).toBe(500);
   });
 
   it('should reject when not a valid date', () => {
-    getProductByReleasedDate('dsf').catch((err) => {
-      expect(err).toBeTruthy();
-    });
+    const invalidReq = {
+      params: {
+        publicDate: 'dssfa',
+      },
+    } as any;
+    getProductByReleasedDate(invalidReq, res);
+    expect(res.statusCode).toBe(401);
   });
 });

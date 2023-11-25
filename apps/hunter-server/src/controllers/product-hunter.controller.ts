@@ -9,24 +9,23 @@ const clientSecret = process.env.CLIENT_SECRET ? process.env.CLIENT_SECRET : '';
 const config = new HunterApiConfiguration(clientId, clientSecret);
 export const hunterApi = new ProductHunterApi(config);
 
-export function getProductByReleasedDate(publicDate) {
-  return new Promise((resolve, reject) => {
-    if (
-      !isNaN(new Date(publicDate).getDate()) &&
-      new Date(publicDate) <= new Date()
-    ) {
-      hunterApi
-        .getProductReleasedByDate(publicDate)
-        .then((data) => {
-          resolve(data);
-        })
-        .catch((err) => {
-          reject(err);
-        });
-    } else {
-      reject({
-        error: 'Invalid Data',
+export function getProductByReleasedDate(req, res) {
+  const publicDate = req.params.publicDate as string;
+  if (
+    !isNaN(new Date(publicDate).getDate()) &&
+    new Date(publicDate) <= new Date()
+  ) {
+    hunterApi
+      .getProductReleasedByDate(publicDate)
+      .then((data) => {
+        res.status(201).json(data);
+      })
+      .catch((err) => {
+        res.status(err.status ? err.status : 500).json(err);
       });
-    }
-  });
+  } else {
+    res.status(401).json({
+      error: 'Invalid Data',
+    });
+  }
 }
