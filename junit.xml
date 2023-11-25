@@ -1,79 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="jest tests" tests="24" failures="0" errors="0" time="14.717">
-  <testsuite name="test for product hunter controller" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:16" time="1.478" tests="3">
-    <testcase classname="test for product hunter controller should test get product by release date success" name="test for product hunter controller should test get product by release date success" time="0.021">
+<testsuites name="jest tests" tests="23" failures="0" errors="0" time="20.653">
+  <testsuite name="AppComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:38" time="3.802" tests="2">
+    <testcase classname="AppComponent should get isloading to be falsy" name="AppComponent should get isloading to be falsy" time="0.134">
     </testcase>
-    <testcase classname="test for product hunter controller should throw error" name="test for product hunter controller should throw error" time="0.002">
-    </testcase>
-    <testcase classname="test for product hunter controller should reject when not a valid date" name="test for product hunter controller should reject when not a valid date" time="0.002">
+    <testcase classname="AppComponent should get isloading to be true" name="AppComponent should get isloading to be true" time="0.068">
     </testcase>
   </testsuite>
-  <testsuite name="should teset for product hunter route" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:17" time="0.427" tests="1">
-    <testcase classname="should teset for product hunter route test product-hunter route" name="should teset for product hunter route test product-hunter route" time="0.002">
+  <testsuite name="ProductHunterBoardComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:42" time="2.852" tests="1">
+    <testcase classname="ProductHunterBoardComponent should create" name="ProductHunterBoardComponent should create" time="0.156">
     </testcase>
   </testsuite>
-  <testsuite name="AppComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:18" time="1.608" tests="2">
-    <testcase classname="AppComponent should get isloading to be falsy" name="AppComponent should get isloading to be falsy" time="0.145">
+  <testsuite name="ProductHunterDatePickerComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:45" time="2.386" tests="3">
+    <testcase classname="ProductHunterDatePickerComponent should create" name="ProductHunterDatePickerComponent should create" time="0.124">
     </testcase>
-    <testcase classname="AppComponent should get isloading to be true" name="AppComponent should get isloading to be true" time="0.079">
+    <testcase classname="ProductHunterDatePickerComponent should set previous day" name="ProductHunterDatePickerComponent should set previous day" time="0.032">
     </testcase>
-  </testsuite>
-  <testsuite name="ProductHunterBoardComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:20" time="1.661" tests="1">
-    <testcase classname="ProductHunterBoardComponent should create" name="ProductHunterBoardComponent should create" time="0.16">
+    <testcase classname="ProductHunterDatePickerComponent should set next day" name="ProductHunterDatePickerComponent should set next day" time="0.039">
     </testcase>
   </testsuite>
-  <testsuite name="ProductHunterDatePickerComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:21" time="1.621" tests="3">
-    <testcase classname="ProductHunterDatePickerComponent should create" name="ProductHunterDatePickerComponent should create" time="0.146">
-    </testcase>
-    <testcase classname="ProductHunterDatePickerComponent should set previous day" name="ProductHunterDatePickerComponent should set previous day" time="0.048">
-    </testcase>
-    <testcase classname="ProductHunterDatePickerComponent should set next day" name="ProductHunterDatePickerComponent should set next day" time="0.045">
+  <testsuite name="ProductHunterNavComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:48" time="2.347" tests="1">
+    <testcase classname="ProductHunterNavComponent should create" name="ProductHunterNavComponent should create" time="0.097">
     </testcase>
   </testsuite>
-  <testsuite name="ProductHunterNavComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:23" time="1.73" tests="1">
-    <testcase classname="ProductHunterNavComponent should create" name="ProductHunterNavComponent should create" time="0.117">
-    </testcase>
-  </testsuite>
-  <testsuite name="ProductHunterNoDataComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:25" time="1.099" tests="1">
-    <testcase classname="ProductHunterNoDataComponent should create" name="ProductHunterNoDataComponent should create" time="0.055">
-    </testcase>
-  </testsuite>
-  <testsuite name="product hunter servies" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:26" time="1.017" tests="2">
-    <testcase classname="product hunter servies should be created" name="product hunter servies should be created" time="0.014">
+  <testsuite name="product hunter servies" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:50" time="1.593" tests="2">
+    <testcase classname="product hunter servies should be created" name="product hunter servies should be created" time="0.015">
     </testcase>
     <testcase classname="product hunter servies should test set targetdate " name="product hunter servies should test set targetdate " time="0.008">
     </testcase>
   </testsuite>
-  <testsuite name="ProductListComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:27" time="1.226" tests="2">
-    <testcase classname="ProductListComponent should create" name="ProductListComponent should create" time="0.219">
-    </testcase>
-    <testcase classname="ProductListComponent should filter according to the select" name="ProductListComponent should filter according to the select" time="0.052">
+  <testsuite name="ProductHunterNoDataComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:51" time="2.101" tests="1">
+    <testcase classname="ProductHunterNoDataComponent should create" name="ProductHunterNoDataComponent should create" time="0.063">
     </testcase>
   </testsuite>
-  <testsuite name="ProductHunterChartComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:28" time="0.521" tests="1">
-    <testcase classname="ProductHunterChartComponent should create" name="ProductHunterChartComponent should create" time="0.054">
+  <testsuite name="ProductListComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:54" time="0.994" tests="2">
+    <testcase classname="ProductListComponent should create" name="ProductListComponent should create" time="0.143">
+    </testcase>
+    <testcase classname="ProductListComponent should filter according to the select" name="ProductListComponent should filter according to the select" time="0.037">
     </testcase>
   </testsuite>
-  <testsuite name="ProductHunterCardComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:29" time="0.76" tests="1">
-    <testcase classname="ProductHunterCardComponent should create" name="ProductHunterCardComponent should create" time="0.077">
+  <testsuite name="test for product hunter controller" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:55" time="1.084" tests="3">
+    <testcase classname="test for product hunter controller should test get product by release date success" name="test for product hunter controller should test get product by release date success" time="0.007">
+    </testcase>
+    <testcase classname="test for product hunter controller should throw error" name="test for product hunter controller should throw error" time="0.001">
+    </testcase>
+    <testcase classname="test for product hunter controller should reject when not a valid date" name="test for product hunter controller should reject when not a valid date" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="test hunter api config" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:29" time="0.289" tests="3">
-    <testcase classname="test hunter api config test constructor" name="test hunter api config test constructor" time="0.002">
+  <testsuite name="ProductHunterCardComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:56" time="0.704" tests="1">
+    <testcase classname="ProductHunterCardComponent should create" name="ProductHunterCardComponent should create" time="0.065">
+    </testcase>
+  </testsuite>
+  <testsuite name="ProductHunterChartComponent" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:56" time="0.573" tests="1">
+    <testcase classname="ProductHunterChartComponent should create" name="ProductHunterChartComponent should create" time="0.049">
+    </testcase>
+  </testsuite>
+  <testsuite name="should teset for product hunter route" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:57" time="0.675" tests="1">
+    <testcase classname="should teset for product hunter route test product-hunter route" name="should teset for product hunter route test product-hunter route" time="0.003">
+    </testcase>
+  </testsuite>
+  <testsuite name="test hunter api config" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:58" time="0.438" tests="3">
+    <testcase classname="test hunter api config test constructor" name="test hunter api config test constructor" time="0.003">
     </testcase>
     <testcase classname="test hunter api config test get api key" name="test hunter api config test get api key" time="0.002">
     </testcase>
     <testcase classname="test hunter api config test on request" name="test hunter api config test on request" time="0.001">
     </testcase>
   </testsuite>
-  <testsuite name="test for product hunter api" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:30" time="0.244" tests="2">
-    <testcase classname="test for product hunter api test get product released by date two page" name="test for product hunter api test get product released by date two page" time="0.003">
+  <testsuite name="test for product hunter api" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:17:58" time="0.315" tests="2">
+    <testcase classname="test for product hunter api test get product released by date two page" name="test for product hunter api test get product released by date two page" time="0.004">
     </testcase>
     <testcase classname="test for product hunter api test format producted post data" name="test for product hunter api test format producted post data" time="0.001">
-    </testcase>
-  </testsuite>
-  <testsuite name="GET /" errors="0" failures="0" skipped="0" timestamp="2023-11-25T14:01:30" time="0.264" tests="1">
-    <testcase classname="GET / should return a message" name="GET / should return a message" time="0.044">
     </testcase>
   </testsuite>
 </testsuites>

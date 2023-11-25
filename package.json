@@ -8,7 +8,7 @@
     "build:server": "nx build hunter-server",
     "start": "nx build product-hunter-common && nx serve hunter-server",
     "format": "nx format",
-    "coverage": "jest --ci --coverage --reporters=default --reporters=jest-junit --maxWorkers=1",
+    "coverage": "jest --ci --coverage --testPathIgnorePatterns='apps/hunter-server-e2e' --reporters=default --reporters=jest-junit --maxWorkers=1",
     "e2e:angular": "nx e2e product-daily-hunter-e2e ",
     "e2e:server": "nx e2e hunter-server-e2e"
   },
